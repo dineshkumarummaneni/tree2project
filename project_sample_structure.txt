@@ -1,0 +1,100 @@
+gitops-agent/
+│
+├── pyproject.toml
+├── README.md
+├── LICENSE
+│
+├── gitops_agent_main/
+│   │
+│   ├── cli/
+│   │   ├── app.py
+│   │   ├── commands/
+│   │   │   ├── clone.py
+│   │   │   ├── pull.py
+│   │   │   ├── push.py
+│   │   │   ├── modify.py
+│   │   │   ├── resolve.py
+│   │   │   ├── sync.py
+│   │   │   └── run.py
+│   │
+│   ├── core/
+│   │   ├── orchestrator.py
+│   │   ├── workflow.py
+│   │   ├── models.py
+│   │   ├── exceptions.py
+│   │   └── result.py
+│   │
+│   ├── git/
+│   │   ├── manager.py
+│   │   ├── operations.py
+│   │   ├── auth.py
+│   │   └── recovery.py
+│   │
+│   ├── github/
+│   │   ├── adapter.py
+│   │   ├── pygithub_adapter.py
+│   │   └── models.py
+│   │
+│   ├── mcp/
+│   │   ├── registry.py
+│   │   ├── base_tool.py
+│   │   ├── tool_selector.py
+│   │   └── tools/
+│   │
+│   ├── llm/
+│   │   ├── provider.py
+│   │   ├── planner.py
+│   │   ├── reasoning.py
+│   │   └── confidence.py
+│   │
+│   ├── repository/
+│   │   ├── analyzer.py
+│   │   ├── dependency_graph.py
+│   │   └── context_builder.py
+│   │
+│   ├── code_edit/
+│   │   ├── editor.py
+│   │   ├── locator.py
+│   │   ├── patcher.py
+│   │   └── diff.py
+│   │
+│   ├── conflict/
+│   │   ├── detector.py
+│   │   ├── classifier.py
+│   │   ├── resolver.py
+│   │   └── validator.py
+│   │
+│   ├── validation/
+│   │   ├── engine.py
+│   │   ├── python.py
+│   │   ├── node.py
+│   │   ├── go.py
+│   │   └── rust.py
+│   │
+│   ├── approval/
+│   │   ├── manager.py
+│   │   └── ui.py
+│   │
+│   ├── memory/
+│   │   ├── sqlite_store.py
+│   │   └── models.py
+│   │
+│   ├── telemetry/
+│   │   ├── logger.py
+│   │   ├── audit.py
+│   │   └── report.py
+│   │
+│   ├── config/
+│   │   ├── settings.py
+│   │   └── profiles.py
+│   │
+│   └── plugins/
+│       ├── manager.py
+│       └── interfaces.py
+│
+├── tests/
+│   ├── unit/
+│   ├── integration/
+│   └── fixtures/
+│
+└── examples/
