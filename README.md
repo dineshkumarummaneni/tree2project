@@ -1,221 +1,139 @@
-# Folder Structure Creator
+# tree2project
 
-A Python utility that recreates an entire project directory structure from a tree-format text file.
+Create complete project directory structures from tree-format text files.
 
-The tool reads a folder structure specification, asks the user where it should be created, displays a preview, and then generates all directories and files exactly as defined.
-
----
-
-## Features
-
-* Create complete project structures from text files
-* Interactive target directory selection
-* Structure preview before creation
-* Dry-run mode
-* Automatic directory creation
-* Skip existing files
-* Validation of input paths
-* Supports standard tree-style structures
-* Suitable for AI agents and repository bootstrapping
-
----
-
-## Supported Structure Format
-
-Example structure file:
-
-```text
-gitops-agent/
-├── pyproject.toml
-├── README.md
-├── LICENSE
-│
-├── gitops_agent/
-│   ├── cli/
-│   │   ├── app.py
-│   │   └── commands/
-│   │       ├── clone.py
-│   │       ├── pull.py
-│   │       └── push.py
-│
-│   ├── core/
-│   │   ├── orchestrator.py
-│   │   └── workflow.py
-│
-│   └── config/
-│       └── settings.py
-│
-├── tests/
-│   ├── unit/
-│   └── integration/
-│
-└── examples/
-```
+`tree2project` allows developers, DevOps engineers, and AI agents to quickly scaffold projects using a simple tree representation.
 
 ---
 
 ## Installation
 
-Clone or download the script.
+```bash
+pip install tree2project
+```
 
-Requirements:
+---
+
+## Features
+
+* Create project structures from tree files
+* Export existing project structures
+* Validate generated structures
+* Dry-run support
+* Interactive target directory selection
+* Cross-platform
+* Lightweight and dependency-friendly
+
+---
+
+## Example Structure File
+
+```text
+gitops-agent/
+├── pyproject.toml
+├── README.md
+├── src/
+│   ├── main.py
+│   └── utils/
+│       └── helpers.py
+└── tests/
+```
+
+---
+
+## Create Project Structure
 
 ```bash
-python >= 3.9
+tree2project create structure.txt
 ```
 
-No third-party dependencies are required.
-
----
-
-## Usage
-
-### Option 1: Provide Structure File as Argument
+Specify target directory:
 
 ```bash
-python main.py project_structure.txt
+tree2project create structure.txt --target ~/projects
 ```
-
----
-
-### Option 2: Interactive Mode
-
-```bash
-python main.py
-```
-
-The program will prompt:
-
-```text
-Enter structure file path:
->
-```
-
----
-
-## Target Directory Selection
-
-After loading the structure file:
-
-```text
-Enter target directory where structure should be created:
->
-```
-
-Example:
-
-```text
-/home/dinesh/Desktop/projects
-```
-
-The generated structure will be created inside the specified directory.
-
----
-
-## Preview Mode
-
-Before creating files:
-
-```text
-Structure Preview
-============================================================
-[DIR ] /home/user/projects/gitops-agent
-[FILE] /home/user/projects/gitops-agent/README.md
-[DIR ] /home/user/projects/gitops-agent/gitops_agent
-============================================================
-```
-
----
-
-## Confirmation
-
-The tool asks for confirmation:
-
-```text
-Create this structure? [y/N]:
-```
-
-Only `y` proceeds with creation.
-
----
-
-## Dry Run
 
 Preview without creating files:
 
 ```bash
-python main.py project_structure.txt --dry-run
-```
-
-Output:
-
-```text
-Structure Preview
-...
-Dry-run complete. No changes made.
+tree2project create structure.txt --dry-run
 ```
 
 ---
 
-## Example
+## Export Existing Structure
 
-Structure File:
+Export project structure:
 
-```text
-myapp/
-├── src/
-│   ├── main.py
-│   └── utils.py
-├── tests/
-└── README.md
+```bash
+tree2project export ./my_project
 ```
 
-Target Directory:
+Save output:
 
-```text
-/home/user/projects
-```
-
-Result:
-
-```text
-/home/user/projects/myapp
-/home/user/projects/myapp/src
-/home/user/projects/myapp/src/main.py
-/home/user/projects/myapp/src/utils.py
-/home/user/projects/myapp/tests
-/home/user/projects/myapp/README.md
+```bash
+tree2project export ./my_project --output structure.txt
 ```
 
 ---
 
-## Existing Files
+## Validate Structure
 
-Behavior:
+Validate project against a structure specification:
 
-* Existing directories are reused
-* Existing files are skipped
-* New files are created as empty files
+```bash
+tree2project validate structure.txt --target ./my_project
+```
+
+Example output:
+
+```text
+Structure valid
+```
+
+or
+
+```text
+Missing paths:
+./my_project/src/main.py
+```
+
+---
+
+## Usage Examples
+
+### Generate New Project
+
+```bash
+tree2project create project_structure.txt
+```
+
+### Export Existing Repository
+
+```bash
+tree2project export ./repository
+```
+
+### Verify Generated Project
+
+```bash
+tree2project validate project_structure.txt --target ./repository
+```
+
+---
+
+## Supported Format
 
 Example:
 
 ```text
-SKIP : /home/user/projects/myapp/README.md
-```
-
----
-
-## Output Summary
-
-After execution:
-
-```text
-Summary
-============================================================
-Directories created : 24
-Files created       : 59
-Files skipped       : 3
-============================================================
+project/
+├── README.md
+├── src/
+│   ├── main.py
+│   └── utils.py
+├── tests/
+└── requirements.txt
 ```
 
 ---
@@ -224,48 +142,73 @@ Files skipped       : 3
 
 ### AI Coding Agents
 
-Generate project skeletons before code generation.
+Generate repository skeletons before code generation.
 
-### Repository Bootstrapping
+### Project Bootstrapping
 
-Create standardized project templates.
+Create standard project layouts instantly.
 
-### Internal Frameworks
+### Development Teams
 
-Provision company-specific repository layouts.
+Share project templates across teams.
 
-### Learning & Training
+### Education
 
-Quickly generate example projects and exercises.
-
----
-
-## Limitations
-
-Current version:
-
-* Creates empty files only
-* Does not overwrite existing files
-* Does not generate file contents
-* Assumes standard tree-format input
+Create exercises and sample projects.
 
 ---
 
-## Future Enhancements
+## Roadmap
 
-Potential additions:
+### v0.2.0
 
-* Auto-generate `__init__.py`
-* File content templates
-* JSON/YAML structure support
-* Overwrite mode
-* Structure validation
-* Export current repository structure
-* Agent integration APIs
-* Parallel file creation
+* JSON support
+* YAML support
+* Structure diff command
+* Template generation
+
+### v0.3.0
+
+* Automatic `__init__.py`
+* GitHub repository templates
+* Framework templates
+
+### v1.0.0
+
+* Plugin system
+* Interactive TUI
+* Advanced validation engine
+
+---
+
+## Development
+
+Clone repository:
+
+```bash
+git clone https://github.com/yourusername/tree2project.git
+```
+
+Install locally:
+
+```bash
+pip install -e .
+```
+
+Run tests:
+
+```bash
+pytest
+```
 
 ---
 
 ## License
 
 MIT License
+
+---
+
+## PyPI
+
+https://pypi.org/project/tree2project/
