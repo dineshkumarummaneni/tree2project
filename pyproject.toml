@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tree2project"
+version = "0.1.0"
+description = "Create project folder structures from tree-format files"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+
+authors = [
+{ name = "Dinesh kumar ummaneni", email = "dineshkumarummaneni@gmail.com" }
+]
+
+keywords = [
+"cli",
+"filesystem",
+"project-generator",
+"scaffold",
+"tree"
+]
+
+classifiers = [
+"Development Status :: 4 - Beta",
+"Environment :: Console",
+"Intended Audience :: Developers",
+"License :: OSI Approved :: MIT License",
+"Programming Language :: Python :: 3",
+"Programming Language :: Python :: 3.9",
+"Programming Language :: Python :: 3.10",
+"Programming Language :: Python :: 3.11",
+"Programming Language :: Python :: 3.12"
+]
+
+dependencies = [
+"rich>=13.7.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/yourname/tree2project"
+Repository = "https://github.com/yourname/tree2project"
+
+[project.scripts]
+tree2project = "tree2project.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
